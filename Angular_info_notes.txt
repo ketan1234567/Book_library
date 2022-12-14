@@ -1,0 +1,475 @@
+Angular is Typescript based Framework used to create Single page Application
+Angular is opensource
+Latest Version 14((2nd June 2022)
+
+Advantage
+1)CrossPlatform Support
+2)improved speed and Performance
+3)Faster Developemtn process
+4)support For Unit testing
+5)Light Weight Application
+6)We Can Use Bootstrap & Material UI 
+For Better UI
+
+*)we must have in pc node.js
+1)Install Angular CLI
+npm install -g @angular/cli
+
+2)uninstalling Angular Cli
+npm uninstall -g @angular/cli
+
+3)installing spcific Version of Angular Cli
+npm install -g @angular/cli@11
+
+*)Components
+Components are Primary Building Block Of Element
+1)Basic Component
+ng g c Name
+2)Component inline style
+it doesn't create cs file there are only three files without css file
+ng g c Name inline-style
+3)Component inline Template
+it doesn't create html file there are only three files without html file
+ng g c Name --inline-tamplate
+4)Stand Alone Componenet
+IMP:- We Have to Register first App.module.ts
+File Then Run
+ng g c name -stanaAlone
+
+*)ng g m Access --routing
+
+This is create model 
+
+*)Routing
+
+1)Routes:- This is Place For Routing Map For Component
+
+2)Router-Link:- This is Directive for Navigate Different Routes
+
+3)Router-Outlet:-This is Place fo Display The Matched Route
+
+*)Child Routing 
+*)Group Routing
+*)Module Routing 
+*)Lazy Loading
+Redirect 404 page If route is not Found
+Get Routes Value
+
+This is get value of url Of id 
+First we pass id in Url 
+    {path:"edit/:id",component:EditComponent}
+Then we can pass Router Link also
+like this
+<a routerLink="edit/1">Edit Contact</a>
+Then If we can Get Component go to ts File Write This is code
+
+  constructor(private route:ActivatedRoute){}
+  ngOnInit(): void {
+  const routeid=this.route.snapshot.paramMap.get('id');
+  console.log(routeid);
+  }
+
+imp:We must have to import ActivetedRoute In Contructor
+
+*)This is Lazy Loading 
+{path:"access",loadChildren:()=>import('./access/access.module').then(opt=>opt.AccessModule)},
+{path:"login",loadComponent:()=>import('./login/login.component').then(opt=>opt.LoginComponent)}
+
+we have to write this is code only Routing File Directley Lazy Loading is working
+
+
+This is routing Link is availe
+
+  <a routerLink="access/register">Register</a>
+  <a routerLink="login">Login</a>
+
+
+*)IMP Bindings
+*)Interploation(Data-Binding)-{{}}
+  headerName="This is Interpolation";
+<h2>{{headerName | uppercase}}</h2>
+
+*)Event Binding-()
+<input #txt (change)="functionClick(txt.value)">
+*)Property Binding[]
+<input [disabled]="isdisabled" #txt (change)="functionClick(txt.value)">
+  isdisabled=true;
+
+*)Two way Binding:-[()]
+<input [(ngModel)]="headerName">
+It should be Refelecting to Instant Screen
+*)style Binding:-
+ colorname="red"; This is comes in tc file and 
+  font='40px';
+<h2 [style.color]="colorname" [style.font-size]="font">{{headerName | uppercase}}</h2>
+
+Pipes are Nothing but tranformation of text
+
+
+*)Directive
+Directives are classes that add addtional Behavior to Elements in your
+Angular Application
+1)Component
+2)Attribute Directive
+1)Ng Class
+2)Ng style
+3)Ng Model
+3)Structual  Directive
+ngif ,ngFor ,ngSwitch
+
+1)Ng Class 
+.headclass{
+    color:blue;
+    font-weight: bold;
+    
+}
+  className='headclass';
+
+<h2 [ngClass]="className">{{headerName | uppercase}}</h2>
+
+2)ngStyle:-ng style accept only Object
+  styleValue={"color":"yellow","font-size":"60px"}:-ts File
+
+<h4 [ngStyle]="styleValue">{{headerName | uppercase}}</h4>
+
+1)ngFor
+uses 
+*)Table Data Binding
+*)List Data Binding
+
+*)Implement Authentication
+1)Create login And Signup Screen Function
+2))Activate /Decative user By Adamin User
+3)Customer Curd Operation
+4)Implement Role Based Authentication & Dynamic
+Menu Generetaion
+5)Implement Referesh Token Logic
+6)Menu Features in Angular 14
+7)Interview Question
+
+1)npm install alertifyjs --save
+
+1)Service
+2)Form Type:
+1)Templte Driven Form
+[if we can handle small validation we can use Template Driven Forms
+This is handle Only HTML Files]
+2)Reactive Form
+[if we can handle complex validation we can use Reactive Driven Forms
+This is handle Only ts Files]
+
+1)HTTP Client Module Import 
+
+POST two parameters 
+Firts is Links
+second Is data
+This is we can Store localstorage item in like this is below
+ localStorage.setItem('admin',JSON.stringify(this.respdata));
+
+*)This is Most IMP Auth Guard For Seller[prevent the unauthorized access]
+1)Make auth Gaurd
+2)Apply Gaurd On seller Route
+3)Add Data in LocalStorage
+4)Add Auth Gaurd on Page Refersh
+
+ng g  guard auth
+we have to apply like this 
+    {path:"access",loadChildren:()=>import('./access/access.module').then(opt=>opt.AccessModule),
+    canActivate:[AuthGuard]
+  },
+by default it will true
+
+This is Created Interface bacuse of data type
+Like This exmple 
+
+*)Logout and seller pages
+1)Add Logout Features
+2)Diplay Seller Name
+
+just create logout function onces
+to clickabled
+and 
+that function contains localstorage.remove("admin");
+this.router.navigate(['']);
+
+1)Template Driven Forms
+This  is only validations only html files
+ 
+required FormsModule in app.module.ts File
+
+<form class="example-form" #userSignup="ngForm" (ngSubmit)="signUp(userSignup.value)">
+<mat-form-field class="example-full-width">
+<mat-label>UserID</mat-label>
+<input matInput placeholder="UserId" type="text" name="userid" ngModel required>
+</mat-form-field>
+<mat-form-field class="example-full-width">
+<mat-label>UserName</mat-label>
+<input matInput placeholder="username" type="text" name="username" ngModel required>
+</mat-form-field>
+<mat-form-field class="example-full-width">
+<mat-label>Email</mat-label>
+<input matInput placeholder="Email" type="text" name="email" ngModel required>
+</mat-form-field>       
+<mat-form-field class="example-full-width">
+<mat-label>Password</mat-label>
+<input matInput placeholder="Password" type="password" name="password" ngModel required>
+</mat-form-field>
+<div>
+<button mat-raised-button color="primary" style="margin: 5px;" type="submit">Register</button>
+</div>
+</form>
+
+All values gets This is tc Files
+2)Reactive Forms
+This is Forms Handle all Operation in ts Files
+
+  reactiveform=new FormGroup({
+    userid:new FormControl('',Validators.required),
+    username:new FormControl('',Validators.required),
+    email:new FormControl('',Validators.compose([Validators.required,Validators.email])),
+    password:new FormControl('',Validators.required),
+    role:new FormControl('',Validators.required)
+  });
+
+This is Html File in code
+
+ <form class="example-form" [formGroup]="reactiveform" (ngSubmit)="signUp()">
+            <mat-form-field class="example-full-width">
+              <mat-label>UserID</mat-label>
+              <input matInput placeholder="UserId" type="text"   formControlName="userid" >
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>UserName</mat-label>
+                <input matInput placeholder="username" type="text"  formControlName="username">
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" type="text"    formControlName="email">
+              </mat-form-field>
+          
+            <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" type="password"   formControlName="password">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Role</mat-label>
+                <input matInput placeholder="Role" type="text"    formControlName="role">
+              </mat-form-field>
+
+              <div>
+            
+              <button mat-raised-button color="primary" style="margin: 5px;" type="submit">Register</button>
+              </div>
+            
+          </form>
+
+
+
+
+*)Implement Authrntication
+1)Activate /Deactvate User By admin user
+2)Customer Curd Operation
+3)implement Role Based Authentication & dynamic
+menu Geration
+4)Implement Refersh Token Logic
+5)new Features in Angular 14
+6)Interview Questions
+
+1)If we access path that has no mapping with any component, then to handle 404 Not Found error, we use a path (**) that is mapped with any component to show desired message.
+
+{ path: '**', component: PageNotFoundComponent } 
+
+2)It is used to navigate from one component to another component. To use Router in any component, follow the steps.
+
+import { Router } from '@angular/router'; 
+
+3)Using Router navigate() : Call navigate() method of Router and pass path and parameter if any, to navigate from one component to another component. Find the code snippet.
+
+this.router.navigate(['/update-book', id]); 
+
+Here URL /update-book/:id will be the path to navigate. When the navigate() method will be executed, the component mapped with URL /update-book/:id will be displayed.
+
+
+*****Book Library*********
+
+1)This is Most UseFul Sites
+https://www.concretepage.com/
+2)we are working on that sites
+https://www.concretepage.com/angular-2/angular-2-routing-and-navigation-example
+
+
+first create Component
+1)add-book
+2)home
+3)manage-book
+
+services
+1)Book.service.ts
+
+1. Import RouterModule and Routes : First of all we will import RouterModule and Routes in our component.
+2. Create Array of Routes : Create array of Routes in which we map a URL with a component.
+const routes: Routes = [
+	{ path: 'manage-book', component: ManageBookComponent },
+	{ path: 'update-book/:id', component: UpdateBookComponent }, 
+	{ path: '', redirectTo: '/manage-book ', pathMatch: 'full' },
+	{ path: '**', component: PageNotFoundComponent }
+]
+b. Configure Parameters : Find the mapping.
+{ path: 'update-book/:id', component: UpdateBookComponent } 
+
+In the above path mapping we need to pass a path parameter,
+ for example if we access the URL update-book/100 then UpdateBookComponent will be displayed.
+
+c. Redirect to a URL : Find the mapping.
+{ path: '', redirectTo: '/manage-book ', pathMatch: 'full' } 
+
+If we access a URL without specifying any component path such as "/" then 
+it will be redirected to URL /manage-book path and hence by default ManageBookComponent will be displayed.
+
+d)Handling "Page Not Found" : Find the mapping.
+{ path: '**', component: PageNotFoundComponent } 
+If we access path that has no mapping with any component, then to handle 404 Not Found error,
+we use a path (**) that is mapped with any component to show desired message.
+
+2)Router
+
+1)It is used to navigate from one component to another component. To use Router in any component, follow the steps.
+Import Router : Import Router as follows.
+import { Router } from '@angular/router'; 
+
+
+2.)Router Instance: Make Router service available in component using dependency injection with constructor.
+
+constructor(private router: Router) { 
+} 
+
+3.)Using Router navigate() : Call navigate() method of Router and pass path and parameter 
+if any, to navigate from one component to another component. Find the code snippet.
+
+this.router.navigate(['/update-book', id]); 
+
+3.)ActivatedRoute and Params
+
+ActivatedRoute is an Angular service that contains route specific information such as route parameters, global query params etc. Params is an Angular router API that contains the parameter value. To get the parameter value from Params we need to pass key. To use ActivatedRoute and Params in our component, find the steps.
+1. Import ActivatedRoute and Params: Import ActivatedRoute and Params as given below.
+
+
+import { ActivatedRoute, Params } from '@angular/router'; 
+
+3. Routing with Parameters : Now suppose a URL /update-book/100 is being accessed. To understand the fetching of parameter, find the mapping of component which we configure in module.
+
+{ path: 'update-book/:id', component: UpdateBookComponent } 
+
+URL /update-book/100 will invoke UpdateBookComponent. The path parameter will be accessed by id as given in path mapping with component. We will fetch URL as following.
+
+this.route.params.pipe(
+  switchMap((params: Params) => this.bookService.getBook(+params['id']))
+
+).subscribe(book => this.book = book); We need to know following points.
+
+a. switchMap operator allows us to perform an action with the current value of the Observable and map it to new Observable. Import switchMap in component as follows.
+
+import { switchMap } from 'rxjs/operators'; switchMap handles an Observable as well as a Promise to retrieve the value they emit.
+b. (+) converts string 'id' to a number. In +params['id'], id is the keyword used in URL mapping with component. +params['id'] will return 100 if we use URL /update-book/100 .
+
+c. subscribe is used to detect the id changes to retrieve Book. Book is a class that will be created in our example.
+
+4************ Location*************
+Location is a service that is used to interact with browser URL for example navigating back and forward. Location has methods such as go(), forward() and back() etc. To use Location service, find the following points.
+
+1. Import Location : Import Location in component.
+import { Location } from '@angular/common'; 
+
+2. Location Instance: Make Location available in component using dependency injection with constructor.
+
+constructor(private location: Location) { 
+} 
+
+3. Navigate Back : If we want to go back, then we will call back() method as follows.
+
+this.location.back(); 
+
+2. Add <base href> in index.html
+
+<base> tag in HTML is used to define base URL for relative links. <base> is used within <head> tag. In Angular router it is used to compose navigation URLs. We are adding <base> tag in index.html as follows.
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Angular Demo</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root>Loading...</app-root>
+</body>
+</html> 
+
+*******This is used Promises **********
+
+This is type of definig Array in Empty
+
+
+Book Library 
+in tc file if they are using
+Promises
+
+if they are selecting
+in tc Files
+
+export class BookService {
+    getBooks(): Promise<Book[]> {
+        return Promise.resolve(BOOKS);
+    }
+This is getting data to display Like This is Function
+
+**************code Start********************
+export class HomeComponent implements OnInit { 
+    books: Book[];
+
+    constructor(private bookService: BookService) { }
+    getBooks(): void {
+        this.bookService.getBooks().then(books => this.books = books);
+        
+        
+    }
+    ngOnInit(): void {
+       this.getBooks();
+    }				
+} 
+
+**************code End ********************
+
+
+
+
+
+ 31186-Informatica- 1222-0306 - Informatica-CPL-Q3-Q4-ABM Single-Touch-DGP-DE-XDBS Corp
+31186-Informatica-CPL-Q4-1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

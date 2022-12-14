@@ -57,6 +57,8 @@ this.router.navigate(['/update-book', id]);
 
 ActivatedRoute is an Angular service that contains route specific information such as route parameters, global query params etc. Params is an Angular router API that contains the parameter value. To get the parameter value from Params we need to pass key. To use ActivatedRoute and Params in our component, find the steps.
 1. Import ActivatedRoute and Params: Import ActivatedRoute and Params as given below.
+
+
 import { ActivatedRoute, Params } from '@angular/router'; 
 
 

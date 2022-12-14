@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { switchMap } from 'rxjs/operators';
+import { BookService } from 'src/app/services/book.service';
+import { Book } from 'src/app/book';
 
 @Component({
   selector: 'app-view-details',
@@ -7,10 +11,20 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./view-details.component.css']
 })
 export class ViewDetailsComponent implements OnInit {
-  constructor(private route:ActivatedRoute){}
+  book: Book = new Book();
+  constructor(private route:ActivatedRoute,private router:Router,private bookservices:BookService,private location:Location){}
   ngOnInit(): void {
-    const routeid=this.route.snapshot.paramMap.get('id');
-    console.log(routeid);
-  } 
+    this.route.params.pipe(
+        switchMap((params: Params) => this.bookservices.getBook(+params['id']))
+    ).subscribe(book => {this.book = book; console.log(this.book);});
 
 }
+goBack(): void {
+  this.location.back();
+}
+updateBook(id: number): void {
+  this.router.navigate(['/update-book', id]);
+}
+}
+
+

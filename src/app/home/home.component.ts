@@ -10,11 +10,13 @@ import { BookService } from '../services/book.service';
 })
 export class HomeComponent implements OnInit { 
     books: Book[];
+
     constructor(private bookService: BookService) { }
     getBooks(): void {
         this.bookService.getBooks().then(books => this.books = books);
+     
     }
     ngOnInit(): void {
-        this.getBooks();
+       this.getBooks();
     }				
 } 
