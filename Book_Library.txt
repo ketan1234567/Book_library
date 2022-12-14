@@ -11,3 +11,57 @@ first create Component
 services
 1)Book.service.ts
 
+1. Import RouterModule and Routes : First of all we will import RouterModule and Routes in our component.
+2. Create Array of Routes : Create array of Routes in which we map a URL with a component.
+const routes: Routes = [
+	{ path: 'manage-book', component: ManageBookComponent },
+	{ path: 'update-book/:id', component: UpdateBookComponent }, 
+	{ path: '', redirectTo: '/manage-book ', pathMatch: 'full' },
+	{ path: '**', component: PageNotFoundComponent }
+]
+b. Configure Parameters : Find the mapping.
+{ path: 'update-book/:id', component: UpdateBookComponent } 
+
+In the above path mapping we need to pass a path parameter,
+ for example if we access the URL update-book/100 then UpdateBookComponent will be displayed.
+
+c. Redirect to a URL : Find the mapping.
+{ path: '', redirectTo: '/manage-book ', pathMatch: 'full' } 
+
+If we access a URL without specifying any component path such as "/" then 
+it will be redirected to URL /manage-book path and hence by default ManageBookComponent will be displayed.
+
+d)Handling "Page Not Found" : Find the mapping.
+{ path: '**', component: PageNotFoundComponent } 
+If we access path that has no mapping with any component, then to handle 404 Not Found error,
+we use a path (**) that is mapped with any component to show desired message.
+
+2)Router
+
+1)It is used to navigate from one component to another component. To use Router in any component, follow the steps.
+Import Router : Import Router as follows.
+import { Router } from '@angular/router'; 
+
+
+2.)Router Instance: Make Router service available in component using dependency injection with constructor.
+
+constructor(private router: Router) { 
+} 
+
+3.)Using Router navigate() : Call navigate() method of Router and pass path and parameter 
+if any, to navigate from one component to another component. Find the code snippet.
+
+this.router.navigate(['/update-book', id]); 
+
+3.)ActivatedRoute and Params
+
+ActivatedRoute is an Angular service that contains route specific information such as route parameters, global query params etc. Params is an Angular router API that contains the parameter value. To get the parameter value from Params we need to pass key. To use ActivatedRoute and Params in our component, find the steps.
+1. Import ActivatedRoute and Params: Import ActivatedRoute and Params as given below.
+import { ActivatedRoute, Params } from '@angular/router'; 
+
+
+
+
+
+
+
