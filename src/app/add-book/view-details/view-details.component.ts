@@ -14,9 +14,12 @@ export class ViewDetailsComponent implements OnInit {
   book: Book = new Book();
   constructor(private route:ActivatedRoute,private router:Router,private bookservices:BookService,private location:Location){}
   ngOnInit(): void {
-    this.route.params.pipe(
+  this.route.params.pipe(
         switchMap((params: Params) => this.bookservices.getBook(+params['id']))
     ).subscribe(book => {this.book = book; console.log(this.book);});
+
+    //const routerid=this.route.snapshot.paramMap.get('id');
+   // console.log(routerid);
 
 }
 goBack(): void {

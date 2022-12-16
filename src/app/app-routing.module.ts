@@ -4,7 +4,7 @@ import { ViewDetailsComponent } from './add-book/view-details/view-details.compo
 import { AddbookComponent } from './addbook/addbook.component';
 import { HomeComponent } from './home/home.component';
 import { ManagebookComponent } from './managebook/managebook.component';
-import { UpdatebookComponent } from './mange-book/updatebook/updatebook.component';
+import { UpdateBookComponent } from './mange-book/updatebook/updatebook.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
 { path: 'view-detail/:id', component:ViewDetailsComponent},		  
 { path: 'add-book', component: AddbookComponent },
 { path: 'manage-book', component: ManagebookComponent },
-{ path: 'update-book/:id', component: UpdatebookComponent }, 
+{ path: 'update-book/:id', component: UpdateBookComponent }, 
 { path: '', redirectTo: '/home', pathMatch: 'full' },
 { path: '**', component: PageNotFoundComponent }
 ];

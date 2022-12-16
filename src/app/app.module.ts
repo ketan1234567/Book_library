@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { AddbookComponent } from './addbook/addbook.component';
 import { HomeComponent } from './home/home.component';
 import { ManagebookComponent } from './managebook/managebook.component';
-import { UpdatebookComponent } from './mange-book/updatebook/updatebook.component';
+import { UpdateBookComponent } from './mange-book/updatebook/updatebook.component';
 import { ViewDetailsComponent } from './add-book/view-details/view-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
@@ -36,7 +36,7 @@ import { FormsModule } from '@angular/forms';
 		  },
 		  {
 			path: 'update-book/:id',
-			component: UpdatebookComponent
+			component: UpdateBookComponent
 		  },
 		  {
 			path: '**',
@@ -56,7 +56,7 @@ import { FormsModule } from '@angular/forms';
 	ViewDetailsComponent,
 	AddbookComponent,
 	ManagebookComponent,
-	UpdatebookComponent
+	UpdateBookComponent
   ],
   providers: [
   ],
