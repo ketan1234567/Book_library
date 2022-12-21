@@ -1,0 +1,14 @@
+.ng-star-inserted{
+    width: 70%;
+}
+.mat-mdc-card-title{
+   margin:10px 0px 0px 270px;
+}
+
+.mat-mdc-card-content{
+    margin:5px 0px 0px 100px; 
+}
+.mat-mdc-raised-button.mat-mdc-button-base{
+    height: 40px;
+    margin: 0px 0px 0px 140px;
+}

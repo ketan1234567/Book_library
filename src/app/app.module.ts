@@ -10,13 +10,23 @@ import { ManagebookComponent } from './managebook/managebook.component';
 import { UpdateBookComponent } from './mange-book/updatebook/updatebook.component';
 import { ViewDetailsComponent } from './add-book/view-details/view-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { from } from 'rxjs';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from './Material.Module';
+import { ModalpopupComponent } from './modalpopup/modalpopup.component';
+
 
 
 @NgModule({
   imports: [     
            BrowserModule,
 	   FormsModule,
+	   MaterialModule,
+	   HttpClientModule,
+	   ReactiveFormsModule,
+	   BrowserAnimationsModule,
 	   RouterModule.forRoot([
 		  {
 			path: 'home',
@@ -47,7 +57,8 @@ import { FormsModule } from '@angular/forms';
 		    redirectTo: '/home',
 		    pathMatch: 'full'
 		  }
-		])
+		]),
+    BrowserAnimationsModule
   ],
   declarations: [
   AppComponent, 
@@ -56,7 +67,8 @@ import { FormsModule } from '@angular/forms';
 	ViewDetailsComponent,
 	AddbookComponent,
 	ManagebookComponent,
-	UpdateBookComponent
+	UpdateBookComponent,
+ ModalpopupComponent
   ],
   providers: [
   ],

@@ -1,8 +1,42 @@
-<h2>Manage Book</h2>
+<!--<h2>Manage Book</h2>
 <ul [ngClass] = "'manage-book'">
   <li *ngFor="let book of books" >
           Id: {{book.id}}, Name = {{book.name}}
 	  <button (click)="updateBook(book.id)">Update</button>
 	  <button (click)="deleteBook(book.id)">Remove</button>
   </li>
-</ul>
+</ul>-->
+
+<mat-selection-list #shoes>
+  <mat-list-option *ngFor="let shoe of books">
+    {{shoe.name}} || {{shoe.price}} || {{shoe.description}}
+  </mat-list-option>
+</mat-selection-list>
+
+<p>
+  Options selected: {{shoes.selectedOptions.selected.length}}
+</p>
+<p>
+  <mat-list-option *ngFor="let shoe of books">
+    {{shoe.name}} || {{shoe.price}} || {{shoe.description}}
+  </mat-list-option>
+</p>
+
+<mat-form-field>
+  <mat-label>Favorite food</mat-label>
+  <mat-select  #select multiple>
+
+
+  </mat-select>
+</mat-form-field>
+
+<div class="select-all">
+  <mat-checkbox [(ngModel)]="allSelected"
+                  [ngModelOptions]="{standalone: true}"
+                  (change)="toggleAllSelection()">Select All</mat-checkbox>
+
+</div>
+
+<mat-option (click)="optionClick()" *ngFor="let food of books" [value]="food.name">
+  {{food.name}}
+</mat-option>

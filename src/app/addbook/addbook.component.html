@@ -1,18 +1,36 @@
-<h2>Add Book</h2>
-<div>
- <div>
-    <label>Name: </label>
-    <input [(ngModel)]="book.name" />
- </div>	
- <div>
-    <label>Price: </label>
-    <input [(ngModel)]="book.price" />
- </div>	
- <div>
-    <label>Short Description: </label>
-    <input [(ngModel)]="book.description" />
- </div>	 
- <div>
-    <button (click)="addBook()">Add</button>
- </div>
-</div>  
+
+<mat-card>
+   <mat-card-title>Add Book </mat-card-title>
+   <mat-error style="text-align: center;"></mat-error>
+   <mat-card-content>
+       <form class="example-form"[formGroup]="reactiveform" (ngSubmit)="addBook()">
+           <mat-form-field class="example-full-width">
+             <mat-label>Name</mat-label>
+             <input matInput placeholder="Name" type="text" formControlName="name">
+           </mat-form-field>
+
+           <mat-form-field class="example-full-width">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="Price" type="text" formControlName="price">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Desciption</mat-label>
+            <input matInput placeholder="Price" type="text" formControlName="description">
+          </mat-form-field>
+
+             <div>
+               <button mat-raised-button color="primary" type="submit">Add Book</button>
+       
+             </div>
+       
+    
+         </form>
+         
+   </mat-card-content>
+ 
+ </mat-card>
+
+
+
+
