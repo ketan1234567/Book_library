@@ -34,9 +34,9 @@
   <mat-checkbox [(ngModel)]="allSelected"
                   [ngModelOptions]="{standalone: true}"
                   (change)="toggleAllSelection()">Select All</mat-checkbox>
+                  <mat-option (click)="optionClick()" *ngFor="let food of books" [value]="food.name">
+                    {{food.name}}
+                  </mat-option>
 
 </div>
 
-<mat-option (click)="optionClick()" *ngFor="let food of books" [value]="food.name">
-  {{food.name}}
-</mat-option>
