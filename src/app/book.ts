@@ -4,8 +4,13 @@ export class Book {
     name: string;
     price: string;
     description: string;
+    selected:string;
     constructor() { 
     }
  } 
+
+
+
+
  
  

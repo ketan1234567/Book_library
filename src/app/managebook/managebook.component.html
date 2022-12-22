@@ -6,37 +6,25 @@
 	  <button (click)="deleteBook(book.id)">Remove</button>
   </li>
 </ul>-->
-
-<mat-selection-list #shoes>
-  <mat-list-option *ngFor="let shoe of books">
-    {{shoe.name}} || {{shoe.price}} || {{shoe.description}}
-  </mat-list-option>
-</mat-selection-list>
-
-<p>
-  Options selected: {{shoes.selectedOptions.selected.length}}
-</p>
-<p>
-  <mat-list-option *ngFor="let shoe of books">
-    {{shoe.name}} || {{shoe.price}} || {{shoe.description}}
-  </mat-list-option>
-</p>
-
-<mat-form-field>
-  <mat-label>Favorite food</mat-label>
-  <mat-select  #select multiple>
-
-
-  </mat-select>
-</mat-form-field>
-
-<div class="select-all">
-  <mat-checkbox [(ngModel)]="allSelected"
-                  [ngModelOptions]="{standalone: true}"
-                  (change)="toggleAllSelection()">Select All</mat-checkbox>
-                  <mat-option (click)="optionClick()" *ngFor="let food of books" [value]="food.name">
-                    {{food.name}}
-                  </mat-option>
+<div style="display: column;">
+  <mat-selection-list >
+    <mat-checkbox  #{{shoe.id}} [checked]="isXyzChecked" [(ngModel)]="shoe.selected" *ngFor="let shoe of books">
+       Book Name:-{{shoe.name}} 
+    </mat-checkbox>
+  </mat-selection-list>
 
 </div>
+
+
+<p>
+
+</p>
+<br/><button  mat-raised-button color="accent" (click)="deleteFoodSelected()">delete All</button>
+
+
+
+  
+                
+
+
 
