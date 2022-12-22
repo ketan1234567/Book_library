@@ -50,7 +50,6 @@ export class ManagebookComponent implements OnInit {
       }
     }
     if (this.isXyzChecked === false) { return; }
-
     var self = this;
     alertify.confirm("Remove user", "do you wnat to remove All user simultaneously?", () => {
 
