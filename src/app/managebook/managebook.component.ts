@@ -42,6 +42,7 @@ export class ManagebookComponent implements OnInit {
     this.isXyzChecked = (this.isXyzChecked) ? false : true;
     if (this.isXyzChecked === true) {
       for (let index = 0; index < this.books.length; index++) {
+        debugger;
         this.books[index].selected = "true";
       }
     } else {

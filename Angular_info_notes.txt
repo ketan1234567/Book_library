@@ -1033,6 +1033,216 @@ export class ManageBookComponent implements OnInit {
   </li>
 </ul>
 **************code End********************
+12/18/2022
+Life Cycle Hooks
+1)Angular Life cycle Hooks are Methods
+2)it's Applicable for Both Component Directive
+3)it invokes when directives or components
+creates changes and destroys them
+
+Events
+1)ngOnchanges
+2)ngOninit
+3)ngDoCheck
+4)ngAfterContentInt
+5)ngAfterContentChecked
+6)ngAfterViewInt
+7)ngAfterViewChecked
+8)ngOnDestory
+
+
+2)Process
+
+1)When Angular Application starts
+it first create and  render root component.then it's render the
+child component.
+
+2)once component is loaded it's start the process of rendering view.
+For doing this one it will check input property
+evaluate the data binding
+
+*)Constructor 
+1)constructor is javascript featurs it's invoded once the class is created
+
+2)when constructor  is called non of the component
+input's are not avaible to use.
+
+3)once angular initiate the class kick start change detection cycle of component.
+
+*)Basic Events
+
+1)NgonChanges:-if any input property changes
+
+2)ngOnint
+1)it executes one time
+2)perfect place for implement initiate logic
+3)none of child component are not loaded
+
+
+3)ngDocheck
+it invokes during every change detection cycle
+
+4)ngOnDestory
+invoked when then component is destory 
+
+
+*)Component Specific
+4)ngAfterComtentInit:-it is invoked immediately after 
+angular has completed initialization  of all of the component's 
+content.
+
+it is invoked only once when component is instantiated
+
+5)ngAfterContentChecked:-
+it is called every changes detection event after completeing
+the component content projections
+
+
+6)ngAfterViewInt:-it is invoked immediately after angular has completed
+initizlization of a component's view
+
+it is invoked only once when the view is instantiated
+
+7)ngAfterViewChecked:-it's raised every changes detection
+
+*********************alertifyjs.save pacakage how do I install**********************
+1)npm install alertifyjs --save
+
+2)@import '../node_modules/alertifyjs//build/css/alertify.min.css';
+@import '../node_modules/alertifyjs//build/css/themes/bootstrap.min.css';
+@import '../node_modules/alertifyjs//build/css/themes/default.min.css';
+
+3)import * as alertify from 'alertifyjs';
+
+4)"typeRoots":["node_modules/@type","src/alertifytype.d.ts"],
+
+5)alertifytype.d.ts :-declare module 'alertifyjs';
+
+6)"typeRoots": ["node_modules/@types","src/alertifytype.d.ts"],
+
+*)This is Task For Book_library
+
+we did Learn Array and some of Concept
+1)First Task Is checked all value simultaneously deleted 
+
+This is html File code
+
+<div style="display: column;">
+  <mat-selection-list >
+    <mat-checkbox  #{{shoe.id}} [checked]="isXyzChecked" [(ngModel)]="shoe.selected" *ngFor="let shoe of books">
+       Book Name:-{{shoe.name}} 
+    </mat-checkbox>
+  </mat-selection-list>
+
+</div>
+
+
+<p>
+
+</p>
+<br/><button  mat-raised-button color="accent" (click)="deleteFoodSelected()">delete All</button>
+
+This is Ts Files Code
+
+deleteFoodSelected() {
+    this.isXyzChecked = (this.isXyzChecked) ? false : true;
+    if (this.isXyzChecked === true) {
+      for (let index = 0; index < this.books.length; index++) {
+        this.books[index].selected = "true";
+      }
+    } else {
+      for (let index = 0; index < this.books.length; index++) {
+        this.books[index].selected = null;
+      }
+    }
+    if (this.isXyzChecked === false) { return; }
+    var self = this;
+    alertify.confirm("Remove user", "do you wnat to remove All user simultaneously?", () => {
+      this.bookService.getBooks().then(books => this.books = books);
+      this.selectedBooks = this.books.filter(_ => _.selected);
+      for (var book in this.selectedBooks) {
+        try {
+          this.bookService.RemoveUser(this.selectedBooks[book].id)
+            .subscribe(data => {
+
+            }
+            )
+        } catch (error) {
+          console.log(error);
+
+        }
+      }
+      this.bookService.getBooks().then(books => this.books = books);
+      alertify.success("Removed SuccessFully");
+    }, function () {
+      for (let index = 0; index < self.books.length; index++) {
+        self.books[index].selected = null;
+      }
+
+    });
+  }
+
+What is try and catch Block
+
+The try statement defines a code block to run (to try).
+The catch statement defines a code block to handle any error.
+The finally statement defines a code block to run regardless of the result.
+The throw statement defines a custom error.
+
+1)Code Debugging
+Searching for (and fixing) errors in programming code is called code debugging.
+
+*)Debugging is not easy. But fortunately, all modern browsers have a built-in JavaScript debugger.
+Built-in debuggers can be turned on and off, forcing errors to be reported to the user.
+
+*)With a debugger, you can also set breakpoints (places where code execution can be stopped), and examine variables while the code is executing.
+
+*)Normally (otherwise follow the steps at the bottom of this page), you activate debugging in your browser with the F12 key, and select "Console" in the debugger menu.
+
+*)Setting Breakpoints
+1)In the debugger window, you can set breakpoints in the JavaScript code.
+
+2)At each breakpoint, JavaScript will stop executing, and let you examine JavaScript values.
+
+3)After examining values, you can resume the execution of code (typically with a play button).
+
+********The debugger Keyword***************
+
+*)The debugger keyword stops the execution of JavaScript, and calls (if available) the debugging function.
+This has the same function as setting a breakpoint in the debugger.
+If no debugging is available, the debugger statement has no effect.
+With the debugger turned on, this code will stop executing before it executes the third line.
+
+<script>
+let x = 15 * 5;
+debugger;
+document.getElementById("demo").innerHTML = x;
+</script
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+ 
+
+
 
 
 
